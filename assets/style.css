@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1%;
+    margin: 1%;
+
+}
+.time-temp {
+    color:white;
+    flex: 1 1 0;
+    margin: 1%;
+    border: 1px solid black;
+    padding: 1%;
+}
+
+.rain {
+    background-image: url('./image/rain2.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.clear {
+    background-image: url('./image/clear.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.clouds {
+    background-image: url('./image/clouds.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
