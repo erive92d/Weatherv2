@@ -148,12 +148,15 @@ function displayInfo(data) {
     dayDiv5.classList.add('card')
 
 
-
-
-
-    var day = data.day2
+    var day = data.day1
+    if(day.length === 0) {
+        dayDiv.textContent = 'Day Ended'
+    }
+    
     for (var i = 0; i < day.length; i++) {
+        
         var timeTemp = document.createElement('div')
+       
         timeTemp.classList.add('time-temp')
         if( day[i].weather[0].main === 'Rain'){
             timeTemp.classList.add('rain')
@@ -162,15 +165,17 @@ function displayInfo(data) {
         } else {
             timeTemp.classList.add('clear')
         }
+        
         var day2h3 = document.createElement('p')
         var dayh2 = document.createElement('p')
         dayh2.textContent = day[i].dt_txt.split(' ')[1]
         day2h3.textContent = day[i].main.temp
         timeTemp.append(dayh2,day2h3)
+        
         dayDiv.append(timeTemp)
 
     }
-    var day2 = data.day3
+    var day2 = data.day2
     for (var i = 0; i < day2.length; i++) {
         var timeTemp = document.createElement('div')
         timeTemp.classList.add('time-temp')
@@ -190,7 +195,7 @@ function displayInfo(data) {
         dayDiv2.append(timeTemp)
 
     }
-    var day3 = data.day4
+    var day3 = data.day3
     for (var i = 0; i < day3.length; i++) {
         var timeTemp = document.createElement('div')
         timeTemp.classList.add('time-temp')
@@ -209,7 +214,7 @@ function displayInfo(data) {
         dayDiv3.append(timeTemp)
 
     }
-    var day4 = data.day5
+    var day4 = data.day4
     for (var i = 0; i < day4.length; i++) {
         var timeTemp = document.createElement('div')
         timeTemp.classList.add('time-temp')
@@ -228,7 +233,7 @@ function displayInfo(data) {
         dayDiv4.append(timeTemp)
 
     }
-    var day5 = data.day6
+    var day5 = data.day5
     for (var i = 0; i < day5.length; i++) {
         var timeTemp = document.createElement('div')
         timeTemp.classList.add('time-temp')
