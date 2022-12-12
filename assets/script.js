@@ -1,7 +1,8 @@
 
 var inputValue = $('.form-control');
 var btn = $('.btn')
-var containerEl = $('.main-card')
+var containerEl = document.querySelector('.main-card')
+
 
 var todayDate = dayjs().format('YYYY-MM-DD')
 var tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD')
@@ -117,7 +118,7 @@ function diffDays(data) {
     test['day4'] = fourth
     test['day5'] = fifth
     test['day6'] = sixth
-
+    
     displayInfo(test)
 
 
@@ -131,6 +132,7 @@ function diffDays(data) {
 
 function displayInfo(data) {
     console.log(data)
+    containerEl.innerHTML = ''
     var dayDiv = document.createElement('div')
     dayDiv.textContent = todayDate
     dayDiv.classList.add('card')
@@ -146,6 +148,7 @@ function displayInfo(data) {
     var dayDiv5 = document.createElement('div')
     dayDiv5.textContent = fifthDay
     dayDiv5.classList.add('card')
+    
 
 
     var day = data.day1
@@ -252,8 +255,9 @@ function displayInfo(data) {
         dayDiv5.append(timeTemp)
 
     }
+    
 
-    containerEl.append(dayDiv, dayDiv2,dayDiv3,dayDiv4,dayDiv5)
+    containerEl.append(dayDiv,dayDiv2,dayDiv3,dayDiv4,dayDiv5)
 
 
 
