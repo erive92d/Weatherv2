@@ -20,7 +20,7 @@ console.log(sixDay)
 function getLocation(e) {
     e.preventDefault()
     console.log(inputValue.val())
-    var url = 'http://api.openweathermap.org/geo/1.0/direct?q=' + inputValue.val() + '&limit=5&appid=780441a9c4800cceba01283f606bcc74'
+    var url = 'https://api.openweathermap.org/geo/1.0/direct?q=' + inputValue.val() + '&limit=5&appid=780441a9c4800cceba01283f606bcc74'
     fetch(url)
         .then(function (response) {
             return response.json()
