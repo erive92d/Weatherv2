@@ -48,7 +48,6 @@ function getWeather5(lat, lon) {
         })
         .then(function (data) {
             var dataList = data.list
-            var sky;
             console.log(data.list)
 
 
@@ -57,211 +56,40 @@ function getWeather5(lat, lon) {
             var getItems = JSON.parse(localStorage.getItem('items'))
             var arrayDate = []
             // var dataTemp;
-            var dataDate;;
-            for (var i = 0; i < getItems.length; i++) {
-                // dataTemp = getItems[i].main.temp
-                dataDate = getItems[i].dt_txt.split(' ')[0]
-                // sky = getItems[i].weather[0].main
-                arrayDate.push(dataDate)
 
-
-
-            }
-            diffDays(dataList)
+            diffDays(getItems)
 
         })
-
 }
 
-function diffDays(data) {
-    var dataArray = []
-    for (var i = 0; i < data.length; i++) {
-        var dataDates = data[i].dt_txt.split(' ')[0]
-        dataArray.push(dataDates)
-
-    }
-
-    var first = []
-    var second = []
-    var third = []
-    var fourth = []
-    var fifth = []
-    var sixth = []
-    console.log(data[0])
-    for (var i = 0; i < dataArray.length; i++) {
-        if (todayDate === dataArray[i]) {
-            first.push(data[i])
-        } else if (tomorrow === dataArray[i]) {
-            second.push(data[i])
-        } else if (thirdDay === dataArray[i]) {
-            third.push(data[i])
-        } else if (fourthDay === dataArray[i]) {
-            fourth.push(data[i])
-        } else if (fifthDay === dataArray[i]) {
-            fifth.push(data[i])
+function diffDays(array) {
+   
+    // var date = array[0].dt_txt.split(' ')[0]
+    var objectDates = {}
+    array.map(num => {
+        var currentDate = num.dt_txt.split(' ')[0]
+        if (currentDate === todayDate) {
+             objectDates['day1'] = num
+        } else if(currentDate === tomorrow){
+             objectDates['day2'] = num
+        } else if(currentDate === thirdDay) {
+            objectDates['day3'] = num
+        } else if(currentDate === fourthDay) {
+            objectDates['day4'] = num
         } else {
-            sixth.push(data[i])
+            objectDates['day5'] = num
         }
 
-
-    }
-    console.log(first)
-    console.log(second)
-    console.log(third)
-    console.log(fourth)
-    console.log(fifth)
-    console.log(sixth)
-    var test = {}
-    test['day1'] = first
-    test['day2'] = second
-    test['day3'] = third
-    test['day4'] = fourth
-    test['day5'] = fifth
-    test['day6'] = sixth
+    })
+    displayInfo(objectDates)
     
-    displayInfo(test)
-
-
 }
 
 
-
-
-
-
-
-function displayInfo(data) {
-    console.log(data)
-    containerEl.innerHTML = ''
-    var dayDiv = document.createElement('div')
-    dayDiv.textContent = todayDate
-    dayDiv.classList.add('card')
-    var dayDiv2 = document.createElement('div')
-    dayDiv2.textContent = tomorrow
-    dayDiv2.classList.add('card')
-    var dayDiv3 = document.createElement('div')
-    dayDiv3.textContent = thirdDay
-    dayDiv3.classList.add('card')
-    var dayDiv4 = document.createElement('div')
-    dayDiv4.textContent = fourthDay
-    dayDiv4.classList.add('card')
-    var dayDiv5 = document.createElement('div')
-    dayDiv5.textContent = fifthDay
-    dayDiv5.classList.add('card')
-    
-
-
-    var day = data.day1
-    if(day.length === 0) {
-        dayDiv.textContent = 'Day Ended'
-    }
-    
-    for (var i = 0; i < day.length; i++) {
-        
-        var timeTemp = document.createElement('div')
-       
-        timeTemp.classList.add('time-temp')
-        if( day[i].weather[0].main === 'Rain'){
-            timeTemp.classList.add('rain')
-        } else if(day[i].weather[0].main === 'Clouds'){
-            timeTemp.classList.add('clouds')
-        } else {
-            timeTemp.classList.add('clear')
-        }
-        
-        var day2h3 = document.createElement('p')
-        var dayh2 = document.createElement('p')
-        dayh2.textContent = day[i].dt_txt.split(' ')[1]
-        day2h3.textContent = day[i].main.temp
-        timeTemp.append(dayh2,day2h3)
-        
-        dayDiv.append(timeTemp)
-
-    }
-    var day2 = data.day2
-    for (var i = 0; i < day2.length; i++) {
-        var timeTemp = document.createElement('div')
-        timeTemp.classList.add('time-temp')
-        if( day2[i].weather[0].main === 'Rain'){
-            timeTemp.classList.add('rain')
-        } else if(day2[i].weather[0].main === 'Clouds'){
-            timeTemp.classList.add('clouds')
-        } else {
-            timeTemp.classList.add('clear')
-        }
-       
-        var day2h3 = document.createElement('p')
-        var dayh2 = document.createElement('p')
-        dayh2.textContent = day2[i].dt_txt.split(' ')[1]
-        day2h3.textContent = day2[i].main.temp
-        timeTemp.append(dayh2,day2h3)
-        dayDiv2.append(timeTemp)
-
-    }
-    var day3 = data.day3
-    for (var i = 0; i < day3.length; i++) {
-        var timeTemp = document.createElement('div')
-        timeTemp.classList.add('time-temp')
-        if( day3[i].weather[0].main === 'Rain'){
-            timeTemp.classList.add('rain')
-        } else if(day3[i].weather[0].main === 'Clouds'){
-            timeTemp.classList.add('clouds')
-        } else {
-            timeTemp.classList.add('clear')
-        }
-        var day2h3 = document.createElement('p')
-        var dayh2 = document.createElement('p')
-        dayh2.textContent = day3[i].dt_txt.split(' ')[1]
-        day2h3.textContent = day3[i].main.temp
-        timeTemp.append(dayh2,day2h3)
-        dayDiv3.append(timeTemp)
-
-    }
-    var day4 = data.day4
-    for (var i = 0; i < day4.length; i++) {
-        var timeTemp = document.createElement('div')
-        timeTemp.classList.add('time-temp')
-        if( day4[i].weather[0].main === 'Rain'){
-            timeTemp.classList.add('rain')
-        } else if(day4[i].weather[0].main === 'Clouds'){
-            timeTemp.classList.add('clouds')
-        } else {
-            timeTemp.classList.add('clear')
-        }
-        var day2h3 = document.createElement('p')
-        var dayh2 = document.createElement('p')
-        dayh2.textContent = day4[i].dt_txt.split(' ')[1]
-        day2h3.textContent = day4[i].main.temp
-        timeTemp.append(dayh2,day2h3)
-        dayDiv4.append(timeTemp)
-
-    }
-    var day5 = data.day5
-    for (var i = 0; i < day5.length; i++) {
-        var timeTemp = document.createElement('div')
-        timeTemp.classList.add('time-temp')
-        if( day5[i].weather[0].main === 'Rain'){
-            timeTemp.classList.add('rain')
-        } else if(day5[i].weather[0].main === 'Clouds'){
-            timeTemp.classList.add('clouds')
-        } else {
-            timeTemp.classList.add('clear')
-        }
-        var day2h3 = document.createElement('p')
-        var dayh2 = document.createElement('p')
-        dayh2.textContent = day5[i].dt_txt.split(' ')[1]
-        day2h3.textContent = day5[i].main.temp
-        timeTemp.append(dayh2,day2h3)
-        dayDiv5.append(timeTemp)
-
-    }
-    
-
-    containerEl.append(dayDiv,dayDiv2,dayDiv3,dayDiv4,dayDiv5)
-
-
-
+function displayInfo(object) {
+    var 
 }
+
 
 
 
