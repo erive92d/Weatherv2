@@ -90,13 +90,13 @@ function displayInfo(object) {
     cardEl.classList.add('card')
     var tempEl = document.createElement("h1");
     tempEl.classList.add('infos')
-    tempEl.textContent = object[key].main.temp + '°';
+    tempEl.textContent = 'Average Temperature: ' + object[key].main.temp + '°';
     var sky = document.createElement('h2');
     sky.classList.add('infos')
-    sky.textContent = object[key].weather[0].main;
+    sky.textContent = 'Sky Condition: ' + object[key].weather[0].main;
     var wind = document.createElement('h2');
     wind.classList.add('infos')
-    wind.textContent = object[key].wind.speed;
+    wind.textContent = 'Wind Speed: ' + object[key].wind.speed +' mph';
     var dayEl = document.createElement('h2')
     dayEl.classList.add('dates')
     dayEl.textContent = object[key].dt_txt.split(' ')[0]
