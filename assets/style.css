@@ -1,3 +1,65 @@
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+    gap: 50px;
+}
+.header {
+    display: flex;
+    height: 40vh;
+    background-image: url('./image/rainbow.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    justify-content: center;
+    align-item: center;
+    flex-direction: column;
+}
+.header h1{
+    font-weight: 700;
+    font-size: 400%;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+nav {
+    margin: auto;
+    width: 60%;
+    
+    padding: 1%;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+
+}
+input[type='text'] {
+    width: 80%;
+    margin: 1%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+button[type='submit'] {
+    
+                   
+    background-color: #0d6efd;
+    width: 20%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+button[type='submit']:hover {
+     
+        color: #fff;
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+}
+nav form button {
+    color: white;
+}
+
+
 .container {
     display: flex;
     flex-direction: column;
@@ -6,33 +68,51 @@
 
 .card {
     display: flex;
+    height: 20vh;
+    width: 60%;
     flex-direction: row;
-    justify-content: space-evenly;
+    background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
+    border-radius: 10px;
+    justify-content: space-between;
     padding: 1%;
     margin: 1%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
 }
-.time-temp {
-    color:white;
-    flex: 1 1 0;
-    margin: 1%;
-    border: 1px solid black;
-    padding: 1%;
-    height: 25vh;
+.main-card {
+    display:flex;
+    flex-direction: column;
+    
+    align-items: center;
 }
+.dates {
+    
+    color: white;
+    text-align:center;
+    font-size: 130%;
+    width: 20%;
+    font-weight: 700;
+}
+.infos {
+    
+    
+    font-size: 120%;
+    text-align:center;
+}
+
 
 .rain {
-    background-image: url('./image/rain2.webp');
+    background-image: url('./image/rainv2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .clear {
-    background-image: url('./image/clear.webp');
+    background-image: url('./image/clearv2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .clouds {
-    background-image: url('./image/clouds.webp');
+    background-image: url('./image/cloudsv2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
